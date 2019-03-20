@@ -109,7 +109,7 @@ export class ServersDetailComponent extends Translation implements OnInit, OnDes
                 this.server = a;
 
                 const resources = (<string[]>a.data.resources)
-                    .filter(res => res !== '_cfx_internal' && res !== 'hardcap' && res !== 'sessionmanager');
+                    .filter(res => res !== '_cfx_internal' && res !== 'sessionmanager');
 
                 this.resourceString = resources
                     .join(', ');
