@@ -298,7 +298,7 @@ namespace fx
 		{
 			// create an ENet host
 			ENetAddress addr = GetENetAddress(address);
-			ENetHost* host = enet_host_create(&addr, 64, 2, 0, 0);
+			ENetHost* host = enet_host_create(&addr, 150, 2, 0, 0);
 
 			// ensure the host exists
 			if (!host)

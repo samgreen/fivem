@@ -30,7 +30,7 @@ static InitFunction initFunction([]()
 		// TODO: make instanceable
 		static auto instanceRef = instance;
 		static auto ivVar = instance->AddVariable<int>("sv_infoVersion", ConVar_ServerInfo, 0);
-		static auto maxClientsVar = instance->AddVariable<int>("sv_maxClients", ConVar_ServerInfo, 30);
+		static auto maxClientsVar = instance->AddVariable<int>("sv_maxClients", ConVar_ServerInfo, 96);
 		static auto versionVar = instance->AddVariable<std::string>("version", ConVar_None, "FXServer-" GIT_DESCRIPTION);
 		static auto crashCmd = instance->AddCommand("_crash", []()
 		{
@@ -73,17 +73,10 @@ static InitFunction initFunction([]()
 				}, ConVar_ServerInfo);
 
 				infoJson["resources"] = json::array();
-				infoJson["resources"].push_back("hardcap");
 
 				auto resman = instanceRef->GetComponent<fx::ResourceManager>();
 				resman->ForAllResources([&](fwRefContainer<fx::Resource> resource)
 				{
-					// we've already listed hardcap, no need to actually return it again
-					if (resource->GetName() == "hardcap")
-					{
-						return;
-					}
-
 					// only output started resources
 					if (resource->GetState() != fx::ResourceState::Started)
 					{

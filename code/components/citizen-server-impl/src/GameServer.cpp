@@ -732,7 +732,7 @@ namespace fx
 					infoVars << "\\" << key << "\\" << value;
 				};
 
-				addInfo("sv_maxclients", "24");
+				addInfo("sv_maxclients", "96");
 				addInfo("clients", std::to_string(numClients));
 
 				server->GetInstance()->GetComponent<console::Context>()->GetVariableManager()->ForAllVariables([&](const std::string& name, int flags, const std::shared_ptr<internal::ConsoleVariableEntryBase>& var)
